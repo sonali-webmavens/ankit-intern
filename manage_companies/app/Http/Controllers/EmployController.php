@@ -16,6 +16,7 @@ class EmployController extends Controller
         // $show_compny = Compny::with('employ')->get();
         $show_comp = Compny::all();
         $show_employ = Employee::all();
+        $show_employ = Employee::paginate(10);
         return view('emp.index', compact('show_employ','show_comp'));
     }
     public function create()
