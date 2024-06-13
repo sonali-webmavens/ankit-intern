@@ -1,9 +1,10 @@
-@extends('app')
+@extends('admin.app')
 @section('content')
+
 
         <header class="">
             <div class="container px-3 px-lg-2 my-3">
-                <h1>Employee</h1>
+                <h1>Employee Tabale</h1>
 
                     <a href="{{ route('employ.create') }}" class="btn btn-info">Add Categorie</a>
                     <br><br>
@@ -39,15 +40,13 @@
                                     </td>
                                 </tr>
                             @endforeach
-                            </thead>
-                            </table>
+                        </thead>
+                    </table>
 
 
-                            </div>
-                            </div>
-                            </header>
-                            
-                                                {{ $show_employ->links() }}
+                </div>
+            </div>
+        </header>
 
 @endsection
 

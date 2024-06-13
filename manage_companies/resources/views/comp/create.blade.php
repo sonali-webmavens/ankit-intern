@@ -1,9 +1,10 @@
-@extends('app')
+@extends('admin.app')
 @section('content')
+
 
         <header class="">
             <div class="col-lg-12">
-                <h1 class="my-4">Add Categorie</h1>
+                <h1 class="my-4">Add Company</h1>
 
                 <form action="{{ route('compony.store') }}" method="POST" enctype="multipart/form-data">
 

@@ -1,9 +1,9 @@
-@extends('app')
+@extends('admin.app')
 @section('content')
 
         <header class="">
             <div class="container px-3 px-lg-2 my-3">
-                <h1>Categories</h1>
+                <h1>Companys</h1>
 
                     <a href="{{ route('compony.create') }}" class="btn btn-info">Add Categorie</a>
                     <br><br>
@@ -20,7 +20,7 @@
                                 <tr>
                                     <td>{{  $comp2->name  }}</td>
                                     <td>{{  $comp2->email  }}</td>
-                                    
+
                                     <td><img src="ankit_img/imagepath/{{$comp2->logo}}"  height="100px" width="100px"></td>
                                     <td>
                                         <a class="btn btn-primary" href="{{  route('compony.edit',$comp2->id)}}">Edit</a>

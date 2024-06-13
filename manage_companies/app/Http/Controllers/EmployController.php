@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Models\Compny;
-use App\Models\Employ;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -12,11 +11,8 @@ class EmployController extends Controller
 {
     public function index()
     {
-        // $show_employ = Employee::with('compny')->get();
-        // $show_compny = Compny::with('employ')->get();
         $show_comp = Compny::all();
         $show_employ = Employee::all();
-        $show_employ = Employee::paginate(10);
         return view('emp.index', compact('show_employ','show_comp'));
     }
     public function create()
@@ -68,15 +64,16 @@ class EmployController extends Controller
         return redirect()->route('employ.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-
         Employee::destroy($id);
         return back();
     }
+
+
+
+
+
 
 
 

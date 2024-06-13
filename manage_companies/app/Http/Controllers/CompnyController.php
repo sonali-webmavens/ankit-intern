@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Compny;
-use App\Models\Employ;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CompnyController extends Controller
 {
@@ -19,7 +18,6 @@ class CompnyController extends Controller
         return view('comp.create');
     }
 
-
     public function store(Request $request)
     {
 
@@ -27,6 +25,15 @@ class CompnyController extends Controller
             'name' => 'required',
             'email' => 'required',
         ]);
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+        ];
+        Mail::send('mails.mail', $data, Function($massage){
+            $massage->to('ankit@wemavens.com', 'company name 2')->subject('joining comp');
+            $massage->from('ankit@webmavens.com', 'company name');
+        });
+
         $kujbi = new Compny();
 
         $kujbi->name = $request->input('name');
@@ -43,13 +50,13 @@ class CompnyController extends Controller
         $kujbi->save();
 
 
-        return redirect()->route('compony.index');
+        return redirect()->route('compony.index')->with('success','mail sent');
     }
 
     public function edit(string $id)
     {
         $edit_comp = Compny::findOrFail($id);
- 
+
 
         return view('comp.edit', compact('edit_comp'));
     }
