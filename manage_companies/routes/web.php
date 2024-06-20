@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
 
+use App\Livewire\Employee\EmployeeComponent;
 use App\Livewire\Product\AddProductComponent;
 use App\Livewire\Product\EditProductComponent;
 use App\Livewire\Product\ProductComponent;
@@ -34,6 +35,7 @@ Route::get('search', [HomeController::class, 'index']);
 Route::get('products', ProductComponent::class)->name('allProducts');
 Route::get('products/add', AddProductComponent::class)->name('addProducts');
 Route::get('products/edit/{id}', EditProductComponent::class)->name('editProducts');
+Route::get('Emloyee', EmployeeComponent::class)->name('allEmployee');
 
 
 
