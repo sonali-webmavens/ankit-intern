@@ -14,6 +14,7 @@
                         <thead>
                             <tr>
                                 <th>@lang('auth.full_name')</th>
+                                <br><input type="search" class="form-control" id="name-search" placeholder="Search Name"></th>
                                 <th>@lang('auth.l_name')</th>
                                 <th>@lang('auth.mail')</th>
                                 <th>Phone No</th>
@@ -25,16 +26,17 @@
                         <tfoot>
                             <tr>
 
-                                <nav class="navbar navbar-light bg-light">
+                                {{-- <nav class="navbar navbar-light bg-light">
                                     <div class="container-fluid">
                                       <form  method="GET" action="search" class="d-flex">
                                         <input class="form-control me-2" name="search" type="search" placeholder="Search by Name..." aria-label="Search">
                                         <button class="btn btn-outline-success" type="submit">Search</button>
                                       </form>
                                     </div>
-                                  </nav>
+                                  </nav> --}}
 
                                 <th>First Name</th>
+
                                 <th>Last Name</th>
                                 <th>Email</th>
                                 <th>Phone No</th>
@@ -43,6 +45,7 @@
                                 <th>Updated at</th>
                             </tr>
                         </tfoot>
+
                         <tbody>
 
                             @foreach ($employ as $employ_data )
@@ -60,12 +63,15 @@
 
 
                         </tbody>
+
+
                     </table>
 
                 </div>
             </div>
         </div>
     </main>
+
 
 
 @endsection

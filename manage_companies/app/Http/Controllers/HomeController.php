@@ -23,14 +23,15 @@ class HomeController extends Controller
         $employ = Employee::all();
 
 
-        //aa cod seach mate no chhe
-        $search = $request->search;
+        // //aa cod seach mate no chhe
+        // $search = $request->search;
 
-        $employ = Employee::where(function($query) use ($search){
-            $query->where('fist_name', 'like', "%$search%")
-                  ->orWhere('last_name', 'like', "%$search%");
-        })
-        ->get();
+        // $employ = Employee::where(function($query) use ($search){
+        //     $query->where('fist_name', 'like', "%$search%")
+        //           ->orWhere('last_name', 'like', "%$search%");
+        // })
+        // ->get();
+        
 
         return view('admin.index', compact('compnis','employ'));
     }

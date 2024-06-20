@@ -7,9 +7,16 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
+        <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.css" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
+        
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="{{ asset('admin/css/styles.css') }}" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/2.3.1/css/searchPanes.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/2.3.1/js/dataTables.searchPanes.min.js">
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
 
     </head>
     <body class="sb-nav-fixed">
@@ -83,6 +90,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="serchname">Emploee Table</a>
                                     <a class="nav-link" href="{{ route('compony.index') }}">Company</a>
                                     <a class="nav-link" href="{{ route('employ.index') }}">Employee</a>
                                 </nav>
@@ -172,7 +180,6 @@
 </footer>
 </div>
 </div>
-
 
 
 

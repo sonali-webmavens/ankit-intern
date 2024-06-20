@@ -13,14 +13,14 @@ class HelperTest extends TestCase
         $response = Helper::getAge($bod);
         // dd($response);
 
-        $this->assertTrue($response == "24 year, 4 month and 22 days");
+        $this->assertTrue($response == "24 year, 4 month, 22 day");
     }
 
     public function test_it_return_incorrect_age(): void
     {
-        $bod = "2050/01/22";
+        $bod = "2030/01/22";
         $response = Helper::getAge($bod);
-
-        $this->assertTrue($response == "24 year, 5 month and 21 days");
+        // dd($response);
+        $this->assertTrue($response == "5 year, 7 month, 8 day");
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Requests\StoreEmployeeRequest;
 use App\Models\Compny;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class EmployController extends Controller
 {
@@ -20,6 +21,31 @@ class EmployController extends Controller
         $compny_create = Compny::all();
         return view('emp.create', compact('compny_create'));
     }
+
+    public function data_table(Request $request)
+    {
+        if($request->ajax())
+        {
+            $employee = Employee::with('company')->get();
+            // $employee = Employee::all();
+
+            return DataTables::of($employee)
+            ->addIndexColumn()
+            ->addColumn('company_name',function($row){
+                return $row->company->name;
+            })
+            ->addColumn('action', function($row){
+                $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm"> View </a>';
+                return $btn;
+
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+        }
+
+        return view('datatable.table');
+    }
+
 
 
     public function store(StoreEmployeeRequest $request)
