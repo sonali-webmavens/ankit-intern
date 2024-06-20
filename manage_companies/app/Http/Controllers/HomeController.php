@@ -16,12 +16,23 @@ class HomeController extends Controller
 
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $compnis = Compny::all();
 
         $employ = Employee::all();
 
-        return view('index', compact('compnis','employ'));
+
+        // //aa cod seach mate no chhe
+        // $search = $request->search;
+
+        // $employ = Employee::where(function($query) use ($search){
+        //     $query->where('fist_name', 'like', "%$search%")
+        //           ->orWhere('last_name', 'like', "%$search%");
+        // })
+        // ->get();
+        
+
+        return view('admin.index', compact('compnis','employ'));
     }
 }

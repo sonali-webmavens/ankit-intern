@@ -1,7 +1,6 @@
 @extends('app')
 @section('content')
-
-kuj biii
+<h1>home page</h1>
 
 
 @endsection
