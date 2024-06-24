@@ -29,6 +29,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="products">Products</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('posts.create')}}">Media Post</a>
+                    </li>
 
                     @guest
                         @if (Route::has('login'))

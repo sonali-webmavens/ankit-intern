@@ -6,11 +6,12 @@ use App\Http\Controllers\CompnyController;
 use App\Http\Controllers\EmployController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
-
+use App\Http\Controllers\Post\PostController;
 use App\Livewire\Employee\EmployeeComponent;
 use App\Livewire\Product\AddProductComponent;
 use App\Livewire\Product\EditProductComponent;
 use App\Livewire\Product\ProductComponent;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -37,7 +38,12 @@ Route::get('products/add', AddProductComponent::class)->name('addProducts');
 Route::get('products/edit/{id}', EditProductComponent::class)->name('editProducts');
 Route::get('Emloyee', EmployeeComponent::class)->name('allEmployee');
 
-
-
 //just for unit testing
 Route::delete('/compny/{id}', [CompnyController::class, 'destroy'])->name('compny.destroy');
+
+//Media Library Post
+Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('posts', [PostController::class, 'store'])->name('posts.store');
+Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
+
