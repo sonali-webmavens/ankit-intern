@@ -47,3 +47,6 @@ Route::post('posts', [PostController::class, 'store'])->name('posts.store');
 Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 
+//for demo mail send
+Route::get('demo_mail', [MailController::class, 'sendEmail']);
+
