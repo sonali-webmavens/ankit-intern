@@ -9,6 +9,7 @@ use App\Http\Controllers\CompnyController;
 use App\Http\Controllers\EmployController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\UserController;
@@ -64,7 +65,7 @@ Route::get('demo_mail', [MailController::class, 'sendEmail']);
 Route::resource('subscriptions', SubscriptionController::class);
 Route::get('subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
 
-Route::get('list', [UserController::class, 'list'])->name('list.list');
-Route::post('/sendnotificatin', [UserController::class, 'sendNotification'])->name('subscriptions.sendnotificatin');
+Route::get('list', [UserController::class, 'list'])->middleware('auth')->name('list.list');
+Route::post('/sendnotificatin', [NotificationController::class, 'sendNotification'])->name('subscriptions.sendnotificatin');
 
 

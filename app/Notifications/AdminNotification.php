@@ -9,6 +9,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 
+
 class AdminNotification extends Notification implements ShouldQueue
 {
     use Queueable;
@@ -32,7 +33,7 @@ class AdminNotification extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail']; // Notify via email
     }
 
     /**
@@ -41,21 +42,9 @@ class AdminNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('New Subscription')
-            ->line('A new subscription has been created:')
-            ->line('Plan: ' . $this->subscription->plan)
-            ->line('Price: $' . $this->subscription->price);
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @return array<string, mixed>
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
+                    ->subject('New Subscription Created')
+                    ->line('A new subscription has been created:')
+                    ->line('Plan: ' . $this->subscription->plan)
+                    ->line('Price: ' . $this->subscription->price);
     }
 }

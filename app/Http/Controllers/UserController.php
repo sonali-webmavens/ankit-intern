@@ -20,24 +20,24 @@ class UserController extends Controller
     }
 
 
-    public function sendNotification(Request $request)
-    {
+        // public function sendNotification(Request $request)
+        // {
 
-        $request->validate([
-            'plan' => 'required|string',
-        ]);
+        //     $request->validate([
+        //         'plan' => 'required|string',
+        //     ]);
 
-        $subscription = Sbscriptions::create([
-            'plan' => $request->plan,
-            'price' => Sbscriptions::where('plan', $request->plan)->first()->price,
-        ]);
+        //     $subscription = Sbscriptions::create([
+        //         'plan' => $request->plan,
+        //         'price' => Sbscriptions::where('plan', $request->plan)->first()->price,
+        //     ]);
 
-        // Send notification after creating subscription
-        Notification::send(User::first(), new AdminNotification($subscription));
+        //     // Send notification after creating subscription
+        //     Notification::send(User::first(), new AdminNotification($subscription));
 
-        return redirect()->route('list.list')
-            ->with('success', 'Subscription created successfully.');
-    }
+        //     return redirect()->route('list.list')
+        //         ->with('success', 'Subscription created successfully.');
+        // }
 
 
 

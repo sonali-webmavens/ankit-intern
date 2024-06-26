@@ -60,11 +60,4 @@ class SubscriptionController extends Controller
             ->with('success', 'Subscription deleted successfully');
     }
 
-
-
-
-
-
-
-
 }
