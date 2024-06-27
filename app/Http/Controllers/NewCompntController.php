@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Exports\CompanyExport;
+use App\Exports\CompanyExportWithCsv;
+use App\Exports\CompanyExportWithExcel;
 use App\Models\NewCompny;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -34,13 +36,25 @@ class NewCompntController extends Controller
     //aa function ma fine name correct date and time thi save thase
     public function exportExcel()
     {
-        return Excel::download(new CompanyExport, 'company_' . now()->format('Y-m-d-H-i-s') . '.xlsx');
-    }
-    
-    public function exportCsv()
-    {
-        return Excel::download(new CompanyExport, 'company_' . now()->format('Y-m-d-H-i-s') . '.csv', \Maatwebsite\Excel\Excel::CSV);
+        return Excel::download(new CompanyExportWithExcel, 'company_' . now()->format('Y-m-d-H-i-s') . '.xlsx');
     }
 
+    public function exportCsv()
+    {
+        return Excel::download(new CompanyExportWithCsv, 'company_' . now()->format('Y-m-d-H-i-s') . '.csv', \Maatwebsite\Excel\Excel::CSV);
+    }
+
+    public function exportCompanies(Request $request)
+    {
+        $fileType = $request->input('file_type');
+
+        if ($fileType === 'excel') {
+            return (new CompanyExportWithExcel)->download('company_export.xlsx');
+        } elseif ($fileType === 'csv') {
+            return (new CompanyExportWithCsv)->download('company_export.csv');
+        }
+
+        return redirect()->back()->with('error', 'Invalid file type selected.');
+    }
 
 }
