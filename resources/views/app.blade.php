@@ -32,6 +32,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('posts.create')}}">Media Post</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="subscriptions">Subscriptions</a>
+                    </li>
 
                     @guest
                         @if (Route::has('login'))
@@ -54,6 +57,8 @@
                                 @csrf
                             </form>
                         @endauth
+
+
 
                                     {{-- <li class="nav-item"><a class="nav-link" href={{ route('compony.index') }}>Compnies</a></li>
                                     <li class="nav-item"><a class="nav-link" href={{ route('employ.index') }}>Employs</a></li> --}}
