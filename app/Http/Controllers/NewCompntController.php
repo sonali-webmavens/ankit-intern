@@ -37,10 +37,14 @@ class NewCompntController extends Controller
         return Excel::download(new CompanyExport, 'company_' . now()->format('Y-m-d-H-i-s') . '.xlsx');
     }
 
+    // public function exportCsv()
+    // {
+    //     return Excel::download(new CompanyExport, 'company_' . now()->format('Y-m-d-H-i-s') . '.csv', \Maatwebsite\Excel\Excel::CSV);
+    // }
     public function exportCsv()
-    {
-        return Excel::download(new CompanyExport, 'company_' . now()->format('Y-m-d-H-i-s') . '.csv', \Maatwebsite\Excel\Excel::CSV);
-    }
+{
+    return Excel::download(new CompanyExport, 'company_' . now()->format('Y-m-d-H-i-s') . '.csv', \Maatwebsite\Excel\Excel::CSV);
+}
 
 
 }
