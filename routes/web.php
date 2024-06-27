@@ -9,6 +9,7 @@ use App\Http\Controllers\CompnyController;
 use App\Http\Controllers\EmployController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\NewCompntController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\SubscriptionController;
@@ -68,4 +69,8 @@ Route::get('subscriptions', [SubscriptionController::class, 'index'])->name('sub
 Route::get('list', [UserController::class, 'list'])->middleware('auth')->name('list.list');
 Route::post('/sendnotificatin', [NotificationController::class, 'sendNotification'])->name('subscriptions.sendnotificatin');
 
+
+Route::get('index_newCompny', [NewCompntController::class, 'index'])->name('index_newCompny.index');
+Route::get('companies/export/excel', [NewCompntController::class, 'exportExcel'])->name('companies.export.excel');
+Route::get('companies/export/csv', [NewCompntController::class, 'exportCsv'])->name('companies.export.csv');
 
