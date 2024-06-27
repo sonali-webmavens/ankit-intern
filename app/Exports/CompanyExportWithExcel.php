@@ -4,10 +4,9 @@ namespace App\Exports;
 
 use App\Models\NewCompny;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithCustomCsvSettings;
 
 
-class CompanyExportWithExcel implements FromCollection, WithCustomCsvSettings
+class CompanyExportWithExcel implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
@@ -22,11 +21,4 @@ class CompanyExportWithExcel implements FromCollection, WithCustomCsvSettings
         return 'company_' . now()->format('Y-m-d-H-i-s') . '.xlsx';
     }
 
-    public function getCsvSettings(): array
-    {
-        return [
-            'delimiter' => '|',
-
-        ];
-    }
 }
