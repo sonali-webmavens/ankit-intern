@@ -36,6 +36,9 @@
                         <a class="nav-link" href="{{ route('index_newCompny.index')}}">New Compny</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('upload.index')}}">File Upload</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="subscriptions">Subscriptions</a>
                     </li>
 

@@ -44,17 +44,7 @@ class NewCompntController extends Controller
         return Excel::download(new CompanyExportWithCsv, 'company_' . now()->format('Y-m-d-H-i-s') . '.csv', \Maatwebsite\Excel\Excel::CSV);
     }
 
-    public function exportCompanies(Request $request)
-    {
-        $fileType = $request->input('file_type');
 
-        if ($fileType === 'excel') {
-            return (new CompanyExportWithExcel)->download('company_export.xlsx');
-        } elseif ($fileType === 'csv') {
-            return (new CompanyExportWithCsv)->download('company_export.csv');
-        }
 
-        return redirect()->back()->with('error', 'Invalid file type selected.');
-    }
 
 }

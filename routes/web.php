@@ -13,12 +13,13 @@ use App\Http\Controllers\NewCompntController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
 use App\Livewire\Employee\EmployeeComponent;
 use App\Livewire\Product\AddProductComponent;
 use App\Livewire\Product\EditProductComponent;
 use App\Livewire\Product\ProductComponent;
-
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Route;
 
 
@@ -74,3 +75,5 @@ Route::get('index_newCompny', [NewCompntController::class, 'index'])->name('inde
 Route::get('companies/export/excel', [NewCompntController::class, 'exportExcel'])->name('companies.export.excel');
 Route::get('companies/export/csv', [NewCompntController::class, 'exportCsv'])->name('companies.export.csv');
 
+Route::get('upload', [UploadController::class, 'index'])->name('upload.index');
+Route::post('import', [UploadController::class, 'import'])->name('import.import');

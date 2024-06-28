@@ -20,4 +20,9 @@ class CompanyExportWithCsv implements FromCollection, WithCustomCsvSettings
             'delimiter' => '|',
         ];
     }
+    public function fileName()
+    {
+        return 'company_' . now()->format('Y-m-d-H-i-s') . '.csv';
+    }
+
 }
