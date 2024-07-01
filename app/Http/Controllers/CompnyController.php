@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 use App\Models\Compny;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Scopes\compnyScope;
 
 class CompnyController extends Controller
 {
     public function index()
     {
         $comp = Compny::all();
-        return view('comp.index', compact('comp'));
+        $companyCount = (new compnyScope())->count(Compny::query());
+        return view('comp.index', compact('comp', 'companyCount'));
     }
 
     public function create()
@@ -82,7 +84,22 @@ class CompnyController extends Controller
 
     public function destroy($id)
     {
-        Compny::destroy($id);
+        $compny = Compny::findOrFail($id);
+        $compny->delete();
         return back();
+    }
+
+    public function trashed()
+    {
+        $onlyTrashed = Compny::onlyTrashed()->get();
+        $onlyTrashedCount = (new compnyScope())->countOnlyTrashed(Compny::query());
+        return view('comp.trashed', compact('onlyTrashed', 'onlyTrashedCount'));
+    }
+
+    public function forceDelete($id)
+    {
+        $company = Compny::withTrashed()->findOrFail($id);
+        $company->forceDelete();
+        return redirect()->route('compony.trashed')->with('success', 'Company deleted permanently.');
     }
 }
