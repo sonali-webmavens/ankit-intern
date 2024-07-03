@@ -79,3 +79,15 @@ Route::get('companies/export/csv', [NewCompntController::class, 'exportCsv'])->n
 
 Route::get('upload', [UploadController::class, 'index'])->name('upload.index');
 Route::post('import', [UploadController::class, 'import'])->name('import.import');
+
+
+//S3 file upload
+Route::get('user/create', [UserController::class, 'create'])->name('user.create');
+Route::get('user/show', [UserController::class, 'show'])->name('user.show');
+Route::post('user/store', [UserController::class, 'store'])->name('user.store');
+Route::get('/users/{user}/edit', [UserController::class, 'file_upload'])->name('user.file_upload');
+
+
+Route::get('/users/{user}/file-upload', [UserController::class, 'fileUpload'])->name('user.file_upload');
+Route::post('/users/{user}/file-upload', [UserController::class, 'storeFiles'])->name('user.store_files');
+Route::get('/users/{user}/files', [UserController::class, 'showFiles'])->name('user.files');

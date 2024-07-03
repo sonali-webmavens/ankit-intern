@@ -19,6 +19,7 @@ class compnyScope implements Scope
     {
         return $builder->withTrashed('deleted_at')->count();
     }
+
     public function countOnlyTrashed(Builder $builder)
     {
         return $builder->onlyTrashed()->count();
