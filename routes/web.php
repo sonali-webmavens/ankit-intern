@@ -40,6 +40,8 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 });
 
 Route::resource('compony', 'App\Http\Controllers\CompnyController')->middleware('auth')->middleware('setLocale');
+Route::get('companies/trashed', [CompnyController::class, 'trashed'])->name('compony.trashed');
+Route::delete('companies/{id}/force-delete', [CompnyController::class, 'forceDelete'])->name('compony.forcedelete');
 Route::resource('employ', 'App\Http\Controllers\EmployController')->middleware('auth')->middleware('setLocale');
 Route::get('serchname', [EmployController::class, 'data_table'])->name('users.index');
 
