@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CompnyController;
 use App\Http\Controllers\EmployController;
+use App\Http\Controllers\EmployeeDetailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\NewCompntController;
@@ -40,8 +41,6 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 });
 
 Route::resource('compony', 'App\Http\Controllers\CompnyController')->middleware('auth')->middleware('setLocale');
-Route::get('companies/trashed', [CompnyController::class, 'trashed'])->name('compony.trashed');
-Route::delete('companies/{id}/force-delete', [CompnyController::class, 'forceDelete'])->name('compony.forcedelete');
 Route::resource('employ', 'App\Http\Controllers\EmployController')->middleware('auth')->middleware('setLocale');
 Route::get('serchname', [EmployController::class, 'data_table'])->name('users.index');
 
@@ -91,3 +90,6 @@ Route::get('/users/{user}/edit', [UserController::class, 'file_upload'])->name('
 Route::get('/users/{user}/file-upload', [UserController::class, 'fileUpload'])->name('user.file_upload');
 Route::post('/users/{user}/file-upload', [UserController::class, 'storeFiles'])->name('user.store_files');
 Route::get('/users/{user}/files', [UserController::class, 'showFiles'])->name('user.files');
+
+
+Route::get('/employee-details', [EmployeeDetailController::class, 'showEmployeeDetails'])->name('employee-details.show');
