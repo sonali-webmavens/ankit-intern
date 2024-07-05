@@ -10,8 +10,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         $schedule->command('app:send-timesheet-notification')
-                  ->dailyAt('18:30')
-                  ->timezone('Asia/Kolkata');
+                  ->dailyAt('12:30')
+                  ->timezone('America/Chicago');
     }
 
     protected $commands = [
