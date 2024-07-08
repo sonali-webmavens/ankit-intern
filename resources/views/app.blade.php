@@ -42,6 +42,9 @@
                         <a class="nav-link" href="{{ route('user.create')}}">S3 File Upload</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('employee-details.show')}}">Show Shedule</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="subscriptions">Subscriptions</a>
                     </li>
 
